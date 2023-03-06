@@ -1,8 +1,10 @@
 add_library(ntdll SHARED)
+SET_TARGET_PROPERTIES(ntdll PROPERTIES PREFIX "")
+
+set (CMAKE_SHARED_LINKER_FLAGS "${CMAKE_SHARED_LINKER_FLAGS} -Bsymbolic -Wl,-Bsymbolic-functions -static-libgcc -lunwind -lm ")
 
 target_compile_definitions(ntdll
         PRIVATE
-
         #loader.o def
         SYSTEMDLLPATH=\"\"
         DLL_TO_BINDIR="`tools/makedep -R /usr/local/lib/wine /usr/local/bin`"
