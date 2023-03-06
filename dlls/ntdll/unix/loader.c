@@ -854,7 +854,7 @@ void start_server( BOOL debug )
         if (!pid)
         {
             argv[1] = debug ? debug_flag : NULL;
-            argv[2] = NULL;
+            argv[2] = NULL;s
             exec_wineserver( argv );
             fatal_error( "could not exec wineserver\n" );
         }
