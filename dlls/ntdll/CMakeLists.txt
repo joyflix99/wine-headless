@@ -21,12 +21,12 @@ target_include_directories(ntdll PRIVATE .)
 target_include_directories(ntdll PRIVATE /usr/include/x86_64-linux-gnu)
 
 #UNIX
-file(GLOB_RECURSE UNIX_CPPs
+file(GLOB_RECURSE UNIX_Cs
         ${CMAKE_CURRENT_SOURCE_DIR}/unix/*.c
         )
 
 target_sources(
         ntdll
         PRIVATE
-        ${UNIX_CPPs}
+        ${UNIX_Cs}
 )
