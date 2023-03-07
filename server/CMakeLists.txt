@@ -1,5 +1,7 @@
 add_executable(wineserver)
 
+message(SOURCE_DIR: ${CMAKE_SOURCE_DIR})
+
 target_compile_definitions(wineserver
         PRIVATE
         BIN_TO_NLSDIR="`${WITH_WINE64}/tools/makedep -R /usr/local/bin /usr/local/share/wine/nls`"
@@ -13,3 +15,7 @@ file(GLOB_RECURSE Server_Cs
 target_sources(wineserver
         PRIVATE
         ${Server_Cs})
+
+target_include_directories(wineserver
+        PRIVATE
+        include)

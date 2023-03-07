@@ -11,8 +11,10 @@ endfunction()
 SET_OPTIONS_FUNC()
 
 if (enable-win64)
+    set(MINGW32_GCC "x86_64-w64-mingw32-gcc")
     set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -m64 ")
 else ()
+    set(MINGW32_GCC "i686-w64-mingw32-gcc")
     set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -m32 ")
 endif ()
 
@@ -24,9 +26,8 @@ add_compile_definitions(
 )
 
 include_directories(/usr/include/x86_64-linux-gnu)
-include_directories(include)
-include_directories(wine)
 
+add_subdirectory(programs)
 add_subdirectory(nls)
 add_subdirectory(dlls)
 add_subdirectory(loader)
