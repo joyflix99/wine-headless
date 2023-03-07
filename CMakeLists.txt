@@ -16,8 +16,6 @@ else ()
     set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -m32 ")
 endif ()
 
-set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} ${BIT_FLAG} ")
-
 add_compile_definitions(
         WINE_UNIX_LIB
         __WINESRC__
@@ -29,6 +27,7 @@ include_directories(/usr/include/x86_64-linux-gnu)
 include_directories(include)
 include_directories(wine)
 
+add_subdirectory(nls)
 add_subdirectory(dlls)
 add_subdirectory(loader)
 add_subdirectory(server)
