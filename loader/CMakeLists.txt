@@ -11,3 +11,7 @@ target_compile_definitions(wine
 target_sources(wine
         PRIVATE
         main.c)
+
+target_include_directories(wine
+        PRIVATE
+        ${CMAKE_SOURCE_DIR}/include)

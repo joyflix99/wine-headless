@@ -18,7 +18,10 @@ target_compile_definitions(ntdll
         WINE_UNIX_LIB)
 
 target_include_directories(ntdll PRIVATE .)
-target_include_directories(ntdll PRIVATE /usr/include/x86_64-linux-gnu)
+target_include_directories(ntdll
+        PRIVATE
+        /usr/include/x86_64-linux-gnu
+        ${CMAKE_SOURCE_DIR}/include)
 
 #UNIX
 file(GLOB_RECURSE UNIX_Cs

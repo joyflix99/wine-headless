@@ -1,6 +1,6 @@
 add_executable(wineserver)
 
-message(SOURCE_DIR: ${CMAKE_SOURCE_DIR})
+add_dependencies(wineserver NLS_SYMBOLIC_LINK)
 
 target_compile_definitions(wineserver
         PRIVATE
@@ -12,10 +12,11 @@ file(GLOB_RECURSE Server_Cs
         ${CMAKE_CURRENT_SOURCE_DIR}/*.c
         )
 
+target_include_directories(wineserver
+        PRIVATE
+        .
+        ${CMAKE_SOURCE_DIR}/include)
+
 target_sources(wineserver
         PRIVATE
         ${Server_Cs})
-
-target_include_directories(wineserver
-        PRIVATE
-        include)

@@ -25,8 +25,6 @@ add_compile_definitions(
         _REENTRANT
 )
 
-include_directories(/usr/include/x86_64-linux-gnu)
-
 add_subdirectory(programs)
 add_subdirectory(nls)
 add_subdirectory(dlls)
