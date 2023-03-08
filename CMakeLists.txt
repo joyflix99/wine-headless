@@ -15,7 +15,6 @@ function(FIND_PACKAGES)
 endfunction()
 
 SET_OPTIONS_FUNC()
-
 FIND_PACKAGES()
 
 if (enable-win64)
@@ -25,6 +24,18 @@ else ()
     set(MINGW32_GCC "i686-w64-mingw32-gcc")
     set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -m32 ")
 endif ()
+
+#Configure GNU AUTOTools
+set(GNU_BUILD ${CMAKE_BINARY_DIR}/GNU_BUILD)
+function(CONFIGURE_GNU_AUTOTOOLS)
+    file(MAKE_DIRECTORY ${GNU_BUILD})
+
+    add_custom_target(GNU_BUILD_TARGET
+            WORKING_DIRECTORY ${GNU_BUILD}
+            COMMAND ../../configure --enable-win64
+            COMMENT "Configure GNU AUTOTools")
+endfunction()
+CONFIGURE_GNU_AUTOTOOLS()
 
 add_compile_definitions(
         WINE_UNIX_LIB
