@@ -4,9 +4,13 @@ add_executable(widl)
 BISON_TARGET(PARSER.TAB parser.y parser.tab.c
         DEFINES_FILE ${CMAKE_CURRENT_BINARY_DIR}/parser.tab.h)
 
+BISON_TARGET(PPY.TAB ${CMAKE_SOURCE_DIR}/tools/wrc/ppy.y ppy.tab.c
+        DEFINES_FILE ${CMAKE_CURRENT_BINARY_DIR}/ppy.tab.h)
+
 #FLEX
 FLEX_TARGET(PARSER.YY parser.l parser.yy.c)
-message("bison header:" ${BISON_PARSER.TAB_OUTPUT_HEADER})
+FLEX_TARGET(PPY.YY ${CMAKE_SOURCE_DIR}/tools/wrc/ppl.l ppl.yy.c)
+
 #widl *.c
 file(GLOB WIDL_Cs
         ${CMAKE_CURRENT_SOURCE_DIR}/*.c
@@ -25,7 +29,9 @@ target_compile_definitions(widl
 target_sources(widl
         PRIVATE
         ${BISON_PARSER.TAB_OUTPUTS}
+        ${BISON_PPY.TAB_OUTPUTS}
         ${FLEX_PARSER.YY_OUTPUTS}
+        ${FLEX_PPY.YY_OUTPUTS}
         ${WIDL_Cs}
         )
 
