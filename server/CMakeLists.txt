@@ -1,7 +1,5 @@
 add_executable(wineserver)
 
-add_dependencies(wineserver NLS_SYMBOLIC_LINK)
-
 target_compile_definitions(wineserver
         PRIVATE
         BIN_TO_NLSDIR="`${WITH_WINE64}/tools/makedep -R /usr/local/bin /usr/local/share/wine/nls`"

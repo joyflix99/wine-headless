@@ -18,9 +18,11 @@ SET_OPTIONS_FUNC()
 FIND_PACKAGES()
 
 if (enable-win64)
+    set(BIT_PREFIX "64")
     set(MINGW32_GCC "x86_64-w64-mingw32-gcc")
     set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -m64 ")
 else ()
+    set(BIT_PREFIX "")
     set(MINGW32_GCC "i686-w64-mingw32-gcc")
     set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -m32 ")
 endif ()
@@ -44,6 +46,7 @@ add_compile_definitions(
         _REENTRANT
 )
 
+set(WIDL_COMPILER ${GNU_BUILD}/tools/widl/widl)
 add_subdirectory(tools)
 add_subdirectory(programs)
 add_subdirectory(nls)
